@@ -9,9 +9,9 @@ public class DataFilter {
     public static void filtrate(ArrayList<ArrayList<String>> data) {
         int maxSize = getMaxArrayListSize(data);
         for (int i = 0; i < maxSize; i++) {
-            for (int j = 0; j < data.size(); j++) {
+            for (ArrayList<String> file : data) {
                 try {
-                    separateData(data.get(j).get(i));
+                    separateData(file.get(i));
                 } catch (IndexOutOfBoundsException ignored) {
                 }
             }
@@ -22,12 +22,12 @@ public class DataFilter {
 
     private static void separateData(String line) {
         try {
-            integerList.push(Long.parseLong(line));
+            integerList.add(Long.parseLong(line));
         } catch (NumberFormatException e1) {
             try {
-                floatList.push(Double.parseDouble(line));
+                floatList.add(Double.parseDouble(line));
             } catch (NumberFormatException e2) {
-                stringList.push(line);
+                stringList.add(line);
             }
         }
     }

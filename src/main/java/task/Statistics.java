@@ -9,7 +9,7 @@ public class Statistics {
     private static void showFullStatistics() {
         showShortStatistics();
         System.out.println("Minimal integer: " + Collections.min(integerList) + " Maximal integer: " + Collections.max(integerList));
-        System.out.println("Integer sum: " + sum(integerList) + " Average of integers:" + (sum(integerList) / integerList.size()));
+        System.out.println("Integer sum: " + sum(integerList) + " Average integer:" + (sum(integerList) / integerList.size()));
 
         System.out.println("Minimal float: " + Collections.min(floatList) + " Maximal float: " + Collections.max(floatList));
         System.out.println("Integer sum: " + sum(floatList) + " Average of integers: " + (sum(floatList) / floatList.size()));

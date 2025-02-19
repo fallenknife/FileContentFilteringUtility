@@ -1,18 +1,20 @@
 package task;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class util {
+    static String[] options = new String[]{"-o", "-n", "-p", "-a", "-s", "-f"};
     static String outputPath = "";
     static String namePrefix = "";
     static boolean appendMode = false;
     static boolean shortStatistics = false;
     static boolean fullStatistics = false;
 
-    static Stack<String> stringList = new Stack<>();
-    static Stack<Long> integerList = new Stack<>();
-    static Stack<Double> floatList = new Stack<>();
+    static List<String> stringList = new Stack<>();
+    static List<Long> integerList = new Stack<>();
+    static List<Double> floatList = new Stack<>();
 
     public static void main(String[] args) {
         ArrayList<String> inputFiles = Parser.parseArguments(args);
@@ -27,32 +29,17 @@ public class util {
 
         DataFilter.filtrate(lines);
 
-
-////         prints the lines of an array
-//        int i = 0;
-//        for (ArrayList<String> a : lines) {
-//            int j = 0;
-//            for (String element : a) {
-//                System.out.println("elem #" + i + j + " is " + element);
-//                j++;
-//            }
-//            i++;
-//
-//        }
-
-
-//        printData(integerList);
-//        printData(floatList);
-//        printData(stringList);
-
         Statistics.showStatistics();
+        WriteDataToFile.writeToFiles();
+
     }
 
-//    static <T> void printData(Stack<T> data) {
-//        System.out.println("Data Type" + data.getClass());
-//        while (!data.isEmpty()) {
-//            System.out.println(data.pop());
-//        }
-//
-//    }
+    static <T> void printData(List<T> data) {
+
+        for (T datum : data) {
+            System.out.println(datum);
+        }
+
+
+    }
 }

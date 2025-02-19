@@ -1,6 +1,7 @@
 package task;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static task.util.*;
 
@@ -10,10 +11,12 @@ public class Parser {
         for (int i = 0; i < args.length; ++i) {
             switch (args[i]) {
                 case "-o":
-                    if (i + 1 < args.length) outputPath = args[++i];
+                    if (i + 1 < args.length && !Arrays.asList(options).contains(args[i + 1])) {
+                        outputPath = args[++i];
+                    }
                     break;
                 case "-p":
-                    if (i + 1 < args.length) namePrefix = args[++i];
+                    if (i + 1 < args.length && !Arrays.asList(options).contains(args[i + 1])) namePrefix = args[++i];
                     break;
                 case "-a":
                     appendMode = true;
@@ -28,7 +31,6 @@ public class Parser {
                     filenames.add(args[i]);
             }
         }
-
         return filenames;
     }
 }
